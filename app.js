@@ -25,12 +25,13 @@ anwser4.append('Voi var bien co kha nang truy cap o moi cho ngoai ra ta co the v
 anwser5.append('there are undefine, null, NAN, "", 0, false.');
 
 console.log('===============================================================');
+
 var arr0 = ['0', '3', '6', '9'];
 var arr1 = ['2', '5', '8'];
 var arr2 = ['1', '4', '7'];
 
 function sum(a, b) {
-  return (a + b) * (a === b) ? 3 : 1;
+  return (a + b) * ((a === b) ? 3 : 1);
 }
 
 console.log('1.');
@@ -38,7 +39,7 @@ console.log(sum);
 console.log(sum(5, 10), sum(5, 5))
 
 function absoluteDifference(a) {
-  return (19 - a) * ((19 - a) >= 0) ? 1 : -3;
+  return (19 - a) * (((19 - a) >= 0) ? 1 : -3);
 }
 
 console.log('2.');
@@ -75,4 +76,5 @@ function findNumberDivided6(str) {
 
 console.log('4.');
 console.log(findNumberDivided6);
-console.log(findNumberDivided6('1234567890*'), findNumberDivided6('1*9'));
+console.log(findNumberDivided6('1234567890*'));
+console.log(findNumberDivided6('1*9'));
