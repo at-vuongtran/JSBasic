@@ -12,11 +12,8 @@ function show_difference() {
   var a = '';
   if (a == 0) { console.log('so sanh == ket qua: true'); }
   //difference with
-  if (a === 0) { 
-    console.log('so sanh === ket qua: true');
-  } else { 
-    console.log('so sanh === ket qua: false');
-  }
+  if (a === 0) { console.log('so sanh === ket qua: true'); }
+  else { console.log('so sanh === ket qua: false'); }
 }
 console.log(show_difference);
 show_difference();
@@ -50,12 +47,9 @@ function findNumberDivided(str) {
   var result;
   var sum = 0;
   for (var i = 0; i < str.length; i++) {
-    if (str.charAt(i) !== '*') {
-      sum += Number(str.charAt(i));
-    }
+    if (str.charAt(i) !== '*') { sum += Number(str.charAt(i)); }
   }
-  if (sum % 3 === 0) {
-    result = arr0.map((item) => str.replace('*', item));
+  if (sum % 3 === 0) { result = arr0.map((item) => str.replace('*', item));
   } else if (sum % 3 === 1) {
     result = arr1.map((item) => str.replace('*', item));
   } else {
