@@ -70,3 +70,7 @@ function findNumberDivided6(str){
   });
   return result;
 }
+
+console.log('4.');
+console.log(findNumberDivided6);
+console.log(findNumberDivided6('1234567890*'), findNumberDivided6('1*9'));
