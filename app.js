@@ -10,10 +10,16 @@ anwser3.append('== so sanh tuong doi, === so sanh tuyet doi kiem tra them kieu d
 
 function show_difference() {
   var a = '';
-  if (a == 0) { console.log('so sanh == ket qua: true'); }
+  if (a == 0) {
+    console.log('so sanh == ket qua: true');
+  }
   //difference with
-  if (a === 0) { console.log('so sanh === ket qua: true'); }
-  else { console.log('so sanh === ket qua: false'); }
+  if (a === 0) {
+    console.log('so sanh === ket qua: true');
+  }
+  else {
+    console.log('so sanh === ket qua: false');
+  }
 }
 console.log(show_difference);
 show_difference();
@@ -28,7 +34,8 @@ var arr1 = ['2', '5', '8'];
 var arr2 = ['1', '4', '7'];
 
 function sum(a, b) {
-  return (a + b) * ((a === b) ? 3 : 1);
+  var tong = a + b;
+  return tong * ((a === b) ? 3 : 1);
 }
 
 console.log('1.');
@@ -36,7 +43,7 @@ console.log(sum);
 console.log(sum(5, 10), sum(5, 5))
 
 function absoluteDifference(a) {
-  return (19 - a) * (((19 - a) >= 0) ? 1 : -3);
+  return (19 - a) * (19 - a >= 0 ? 1 : -3);
 }
 
 console.log('2.');
@@ -47,13 +54,22 @@ function findNumberDivided(str) {
   var result;
   var sum = 0;
   for (var i = 0; i < str.length; i++) {
-    if (str.charAt(i) !== '*') { sum += Number(str.charAt(i)); }
+    if (str.charAt(i) !== '*') {
+      sum += Number(str.charAt(i));
+    }
   }
-  if (sum % 3 === 0) { result = arr0.map((item) => str.replace('*', item));
+  if (sum % 3 === 0) { 
+    result = arr0.map(function(item) {
+      return str.replace('*', item);
+    });
   } else if (sum % 3 === 1) {
-    result = arr1.map((item) => str.replace('*', item));
+    result = arr1.map(function(item) {
+      return str.replace('*', item);
+    });
   } else {
-    result = arr2.map((item) => str.replace('*', item));
+    result = arr2.map(function(item) {
+      return str.replace('*', item);
+    });
   }
   return result;
 }
@@ -64,7 +80,9 @@ console.log(findNumberDivided('1234567890*'), findNumberDivided('1*9'));
 
 function findNumberDivided6(str) {
   var divided3 = findNumberDivided(str);
-  var result = divided3.filter((item) => Number(item.charAt(item.length - 1)) % 2 === 0);
+  var result = divided3.filter(function(item) {
+    return Number(item.charAt(item.length - 1)) % 2 === 0;
+  });
   return result;
 }
 
