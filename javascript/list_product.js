@@ -48,4 +48,3 @@ for (var a = 0; a < listButton.length; a++) {
     this.disabled = true;
   })
 }
-

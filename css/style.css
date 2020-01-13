@@ -331,3 +331,7 @@ footer {
 .quantity-product {
   padding: 4px;
 }
+
+.about-us ul, .support ul, .connection ul {
+  display: block;
+}

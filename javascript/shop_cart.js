@@ -4,7 +4,7 @@ var arrSubTotal = document.getElementsByClassName('sub-total');
 var data = JSON.parse(localStorage.getItem('products'));
 
 var domElement = data.map(function(item, index) {
-  return '<tr class="js-tb-line"><td class="js-tb-col">' + index + 1 +'</td><td class="js-tb-col">' + item.name + '</td><td class="js-tb-col"><input type="number" min="1" class="quantity-product" value="1"></td><td class="js-tb-col">'+ item.gia + '</td><td class="js-tb-col sub-total">' + item.gia + '</td><td class="js-tb-col"><button>X</button></td"></tr>';
+  return '<tr class="js-tb-line"><td class="js-tb-col">' + index + 1 +'</td><td class="js-tb-col">' + item.name + '</td><td class="js-tb-col"><input type="number" min="1" class="quantity-product" value="1"></td><td class="js-tb-col">'+ item.gia + '</td><td class="js-tb-col sub-total">' + item.gia + '</td><td class="js-tb-col"><button class="btn-remove">X</button></td"></tr>';
 });
 
 var table = document.getElementById('list-cart-view');
@@ -30,7 +30,7 @@ for (var i = 0; i < arrQuantity.length; i++) {
     console.log(tmp)
     if (tmp !== null) {
       console.log(this.value)
-      var a = 5000000 * Number(this.value);
+      var a = data[tmp].gia * Number(this.value);
       arrSubTotal[tmp].innerHTML = a;
     }
     total();
@@ -50,3 +50,11 @@ function total() {
 
 var totalPrice = document.getElementById('total');
 totalPrice.innerHTML = total();
+
+var listBtnRemove = document.getElementsByClassName('btn-remove');
+
+for (var z = 0; z < listBtnRemove.length; z++) {
+  this.addEventListener('click', function() {
+    var indexBtnRm = findIndex(this);
+  })
+}
