@@ -3,8 +3,8 @@ var arrSubTotal = document.getElementsByClassName('sub-total');
 
 var data = JSON.parse(localStorage.getItem('products'));
 
-var domElement = data.map(function(item, index) {
-  return '<tr class="js-tb-line"><td class="js-tb-col">' + index + 1 +'</td><td class="js-tb-col">' + item.name + '</td><td class="js-tb-col"><input type="number" min="1" class="quantity-product" value="1"></td><td class="js-tb-col">'+ item.gia + '</td><td class="js-tb-col sub-total">' + item.gia + '</td><td class="js-tb-col"><button class="btn-remove">X</button></td"></tr>';
+var domElement = data.map(function (item, index) {
+  return '<tr class="js-tb-line"><td class="js-tb-col">' + index + 1 + '</td><td class="js-tb-col">' + item.name + '</td><td class="js-tb-col"><input type="number" min="1" class="quantity-product" value="1"></td><td class="js-tb-col">' + item.gia + '</td><td class="js-tb-col sub-total">' + item.gia + '</td><td class="js-tb-col"><button class="btn-remove">X</button></td"></tr>';
 });
 
 var table = document.getElementById('list-cart-view');
@@ -23,17 +23,24 @@ function findIndex(item) {
 }
 
 for (var i = 0; i < arrQuantity.length; i++) {
-  document.getElementsByClassName('quantity-product')[i].addEventListener('change', function(){
-    this.setAttribute('value', this.value);
-    var tmp = findIndex(this);
-    console.log(this.value);
-    console.log(tmp)
-    if (tmp !== null) {
-      console.log(this.value)
-      var a = data[tmp].gia * Number(this.value);
-      arrSubTotal[tmp].innerHTML = a;
+  document.getElementsByClassName('quantity-product')[i].addEventListener('change', function () {
+    if (this.value < 1) {
+      this.value = 1;
+    } else if (this.value % 1) {
+      this.value = Math.ceil(this.value);
     }
-    total();
+    else {
+      this.setAttribute('value', this.value);
+      var tmp = findIndex(this);
+      console.log(this.value);
+      console.log(tmp)
+      if (tmp !== null) {
+        console.log(this.value)
+        var a = data[tmp].gia * Number(this.value);
+        arrSubTotal[tmp].innerHTML = a;
+      }
+      total();
+    }
   });
 }
 
@@ -54,7 +61,7 @@ totalPrice.innerHTML = total();
 var listBtnRemove = document.getElementsByClassName('btn-remove');
 
 for (var z = 0; z < listBtnRemove.length; z++) {
-  this.addEventListener('click', function() {
+  this.addEventListener('click', function () {
     var indexBtnRm = findIndex(this);
   })
 }

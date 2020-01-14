@@ -335,3 +335,6 @@ footer {
 .about-us ul, .support ul, .connection ul {
   display: block;
 }
+main {
+  min-height: 500px;
+}
