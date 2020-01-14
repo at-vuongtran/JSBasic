@@ -24,7 +24,7 @@ for (i; i < 4; i++) {
 }
 listItem.innerHTML = str;
 listItem2 = document.getElementById('list-item-2');
-var str2 = ''
+var str2 = '';
 for (i; i < 8; i++) { 
   str2 += '<li class="js-list-item-li"><div class="js-item"><img width="100%" height="100%" class="image-item" data-original="' +listProducts[i].src + '" class=" lazyloaded" alt="OPPO A5 (2020) 64GB" src="' + listProducts[i].src +'"><h3>' + listProducts[i].name + '</h3><div class="price"><strong>' + listProducts[i].gia +'₫</strong></div><div class="promo noimage"><p>' + listProducts[i].content + '</p></div><label class="discount">GIẢM 300.000₫</label><div class="add-tocart"><button class="btn-add-tocart" data-meta=1 id="btn-' + listProducts[i].id + '">Add to cart</button></div></div></li>';
 }
@@ -46,5 +46,5 @@ for (var a = 0; a < listButton.length; a++) {
     saveString = JSON.stringify(arrSave);
     localStorage.setItem('products', saveString);
     this.disabled = true;
-  })
+  });
 }
