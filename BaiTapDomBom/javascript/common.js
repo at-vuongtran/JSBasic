@@ -1,4 +1,4 @@
-var Phone = function(id, name, content, gia, src) {
+var Phone = function (id, name, content, gia, src) {
   this.id = id;
   this.name = name;
   this.content = content;
@@ -17,21 +17,58 @@ var phone8 = new Phone(08, 'OPPO A12 (2020) 64GB', 'Cơ hội trúng 2020 Chuộ
 
 listProducts = [phone1, phone2, phone3, phone4, phone5, phone6, phone7, phone8];
 
-function findProductById(id) {
+function findProductById (id) {
   return listProducts.find(function (item) {
     return item.id === id;
   });
 }
 
-var listProducsInCart = [];
+var listProducsInCart = JSON.parse(localStorage.getItem("products"));
 
 var Item = function (id, quantity) {
   this.id = id;
   this.quantity = quantity;
 }
 
-function findItemById(id) {
+function findItemById (id) {
   return listProducsInCart.find(function (item) {
     return item.id === id;
   });
+}
+
+function findIndex (id) {
+  var i = 0;
+  for (i; i < listProducsInCart.length; i++) {
+    if (listProducsInCart[i].id === id) {
+      return i;
+    }
+  }
+  return null;
+}
+
+function removeById (id) {
+  var index = findIndex(id);
+  if (index !== null) {
+    listProducsInCart.splice(index, 1);
+  }
+}
+
+//add to list products in cart
+
+function addToCart (id) {
+  var tmp = findItemById(id);
+  console.log(tmp);
+  if (tmp) {
+    tmp.quantity += 1;
+  } else {
+    var item = new Item(id, 1);
+    console.log(item)
+    listProducsInCart.unshift(item);
+  }
+}
+
+//save product to local storage
+function saveProducts (id) {
+  var saveStr = JSON.stringify(listProducsInCart);
+  localStorage.setItem('products', saveStr);
 }

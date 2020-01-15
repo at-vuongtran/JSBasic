@@ -2,7 +2,7 @@ listItem = document.getElementById('list-item');
 listItem0 = document.getElementById('list-item');
 listItem1 = document.getElementById('list-item-2');
 
-function renderList(start, end, tag) {
+function renderList (start, end, tag) {
   var i = start;
   for (i; i < end; i++) {
     var liList = document.createElement('li');
@@ -57,26 +57,12 @@ function renderList(start, end, tag) {
 renderList(0, 4, listItem0);
 renderList(4, 8, listItem1);
 
-//save product to local storage
-function saveProducts(id) {
-  var tmp = findItemById(id);
-  console.log(tmp);
-  if (tmp) {
-    tmp.quantity += 1;
-  } else {
-    var item = new Item(id, 1);
-    console.log(item)
-    listProducsInCart.unshift(item);
-  }
-  var saveStr = JSON.stringify(listProducsInCart);
-  localStorage.setItem('products', saveStr);
-}
-
 //set evenlistener for button
 listButton = document.getElementsByClassName('btn-add-tocart');
 for (var a = 0; a < listButton.length; a++) {
   listButton[a].addEventListener('click', function () {
     var idPro = Number(this.getAttribute('data-meta'));
-    saveProducts(idPro);
+    addToCart(idPro)
+    saveProducts();
   });
 }
