@@ -110,3 +110,12 @@ btnNoti.addEventListener('click', function () {
 function someItem () {
   return listProducsInCart.slice(0, 5);
 }
+
+window.onload = function () {
+  var divHide = document.getElementById('notifications');
+  document.onclick = function(e){
+    if(e.target.id !== 'notifications' && e.target.id !== 'noti_Button'){
+      divHide.style.display = 'none';
+    }
+  };
+}

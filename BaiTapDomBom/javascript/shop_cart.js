@@ -112,21 +112,25 @@ for (i; i < listInput.length; i++) {
 }
 
 //function to total prices. it's called when change quantity product or remove or first render this page 
-function total () {
+function total() {
   var sum = 0;
   for (var x = 0; x < arrSubTotal.length; x++) {
     sum += Number(arrSubTotal[x].getAttribute('data'));
   }
   totalPrice.innerHTML = sum + ' đồng';
+  totalPrice.setAttribute('total-old', sum);
 }
 
 for (i = 0; i < listButtonRM.length; i++) {
   listButtonRM[i].addEventListener('click', function () {
     var tr = this.parentNode.parentNode;
+    var subTotal = tr.querySelector('.sub-total');
+    var newCost = Number(totalPrice.getAttribute('total-old')) - Number(subTotal.getAttribute('data'));
+    totalPrice.innerHTML = newCost + ' đồng';
+    totalPrice.setAttribute('total-old', newCost);
     id = Number(tr.getAttribute('data-id'));
     removeById(id);
     saveProducts();
     tr.remove();
-    total();
   });
 }
