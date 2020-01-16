@@ -1,9 +1,9 @@
 var Phone = function(id, name, content, gia, src) {
-    this.id = id;
-    this.name = name;
-    this.content = content;
-    this.gia = gia;
-    this.src = src;
+  this.id = id;
+  this.name = name;
+  this.content = content;
+  this.gia = gia;
+  this.src = src;
 }
 
 var phone1 = new Phone(01, 'OPPO A5 (2020) 64GB', 'Cơ hội trúng 2020 Chuột vàng', 3000000, 'https://cdn.tgdd.vn/Products/Images/42/210441/TimerThumb/oppo-a5-2020.jpg');
@@ -18,101 +18,101 @@ var phone8 = new Phone(08, 'OPPO A12 (2020) 64GB', 'Cơ hội trúng 2020 Chuộ
 listProducts = [phone1, phone2, phone3, phone4, phone5, phone6, phone7, phone8];
 
 function findProductById(id) {
-    return listProducts.find(function(item) {
-        return item.id === id;
-    });
+  return listProducts.find(function(item) {
+    return item.id === id;
+  });
 }
 
 var listProducsInCart = JSON.parse(localStorage.getItem('products'));
 if (!listProducsInCart) {
-    listProducsInCart = [];
+  listProducsInCart = [];
 }
 
 var Item = function(id, quantity) {
-    this.id = id;
-    this.quantity = quantity;
+  this.id = id;
+  this.quantity = quantity;
 }
 
 function findItemById(id) {
-    return listProducsInCart.find(function(item) {
-        return item.id === id;
-    });
+  return listProducsInCart.find(function(item) {
+    return item.id === id;
+  });
 }
 
 function findIndex(id) {
-    var i = 0;
-    for (i; i < listProducsInCart.length; i++) {
-        if (listProducsInCart[i].id === id) {
-            return i;
-        }
+  var i = 0;
+  for (i; i < listProducsInCart.length; i++) {
+    if (listProducsInCart[i].id === id) {
+      return i;
     }
-    return null;
+  }
+  return null;
 }
 
 function removeById(id) {
-    var index = findIndex(id);
-    if (index !== null) {
-        listProducsInCart.splice(index, 1);
-    }
+  var index = findIndex(id);
+  if (index !== null) {
+    listProducsInCart.splice(index, 1);
+  }
 }
 
 //add to list products in cart
 function addToCart(id) {
-    var tmp = findItemById(id);
-    if (tmp) {
-        tmp.quantity += 1;
-    } else {
-        var item = new Item(id, 1);
-        listProducsInCart.unshift(item);
-        var count = document.getElementById('js-noti_Counter');
-        count.innerHTML = listProducsInCart.length;
-    }
+  var tmp = findItemById(id);
+  if (tmp) {
+    tmp.quantity += 1;
+  } else {
+    var item = new Item(id, 1);
+    listProducsInCart.unshift(item);
+    var count = document.getElementById('js-noti_Counter');
+    count.innerHTML = listProducsInCart.length;
+  }
 }
 
 //save product to local storage
 function saveProducts(id) {
-    var saveStr = JSON.stringify(listProducsInCart);
-    localStorage.setItem('products', saveStr);
+  var saveStr = JSON.stringify(listProducsInCart);
+  localStorage.setItem('products', saveStr);
 }
 
 function showNotification() {
-    var notiItem = document.getElementById('js-area-notification');
-    while (notiItem.firstChild) {
-        notiItem.removeChild(notiItem.firstChild);
-    }
-    var i = 0;
-    var news = someItem();
-    for (i; i < news.length; i++) {
-        var divNew = document.createElement('div');
-        divNew.style.display = 'flex';
-        var nameItemNew = document.createElement('div');
-        nameItemNew.className = 'item-new-name';
-        nameItemNew.append(findProductById(news[i].id).name);
-        divNew.append(nameItemNew);
-        notiItem.append(divNew);
-    }
+  var notiItem = document.getElementById('js-area-notification');
+  while (notiItem.firstChild) {
+    notiItem.removeChild(notiItem.firstChild);
+  }
+  var i = 0;
+  var news = someItem();
+  for (i; i < news.length; i++) {
+    var divNew = document.createElement('div');
+    divNew.style.display = 'flex';
+    var nameItemNew = document.createElement('div');
+    nameItemNew.className = 'item-new-name';
+    nameItemNew.append(findProductById(news[i].id).name);
+    divNew.append(nameItemNew);
+    notiItem.append(divNew);
+  }
 }
 
 var btnNoti = document.getElementById('js-noti_Button');
 var notificate = document.getElementById('js-notifications');
 btnNoti.addEventListener('click', function() {
-    if (notificate.style.display === 'none') {
-        notificate.style.display = 'block';
-        showNotification();
-    } else {
-        notificate.style.display = 'none';
-    }
+  if (notificate.style.display === 'none') {
+    notificate.style.display = 'block';
+    showNotification();
+  } else {
+    notificate.style.display = 'none';
+  }
 });
 
 function someItem() {
-    return listProducsInCart.slice(0, 5);
+  return listProducsInCart.slice(0, 5);
 }
 
 window.onload = function() {
-    var divHide = document.getElementById('js-notifications');
-    document.onclick = function(e) {
-        if (e.target.id !== 'js-notifications' && e.target.id !== 'js-noti_Button') {
-            divHide.style.display = 'none';
-        }
-    };
+  var divHide = document.getElementById('js-notifications');
+  document.onclick = function(e) {
+    if (e.target.id !== 'js-notifications' && e.target.id !== 'js-noti_Button') {
+      divHide.style.display = 'none';
+    }
+  };
 }
