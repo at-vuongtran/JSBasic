@@ -422,3 +422,9 @@ main {
 #noti_Container {
   position:relative;
 }
+
+#banner {
+  width: 988px;
+  height: 344px;
+  margin-left: 200px;
+}
