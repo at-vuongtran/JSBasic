@@ -2,7 +2,7 @@ listItem = document.getElementById('list-item');
 listItem0 = document.getElementById('list-item');
 listItem1 = document.getElementById('list-item-2');
 
-function renderList(start, end, tag) {
+function renderList (start, end, tag) {
   var i = start;
   for (i; i < end; i++) {
     var liList = document.createElement('li');
