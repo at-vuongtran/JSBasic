@@ -1,0 +1,85 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	display: flex;
+	background-color: royalblue;
+}
+
+.header-content {
+	margin: 50px 0;
+}
+
+#logo {
+	width: 30%;
+}
+#menu {
+	width: 70%;
+}
+
+.banner {
+	padding: 50px 0;
+}
+
+.menu-list {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+
+.menu-list .menu-item {
+	padding: 10px;
+	font-size: 18pt;
+}
+
+.menu-list .menu-item:hover {
+	background-color: aqua;
+	color: blue;
+}
+
+.list-comment {
+	overflow: auto;
+	max-height: 320px;
+}
+
+.share-me {
+	width: 100%;
+	text-align: center;
+	margin: 50px 0;
+}
+
+.icon {
+	margin: 0 8px;
+}
+
+.btn-area {
+	float: right;
+}
+
+.container {
+	padding: 0 80px;
+}
+
+.write-comment {
+	display: flex;
+}
+
+.comment-item {
+	display: flex;
+	height: 80px;
+	width: 100%;
+}
+
+.button {
+	padding: 15px;
+	border-radius: 50%;
+}
+
+.txt-cmt {
+	outline: none;
+	resize: none;
+	overflow: auto;
+}
